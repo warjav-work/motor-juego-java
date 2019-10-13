@@ -17,6 +17,9 @@ public class Ventana extends Canvas {
 	private static JFrame VENTANA;
 	private static int ANCHO, ALTO, TAM_BUFFER;
 	private static String TITULO;
+	
+	private Thread thread;
+	
 	private static boolean iniciado;
 
 	public Ventana(String titulo, int ancho, int alto, int tam_buffer) {
@@ -87,6 +90,10 @@ public class Ventana extends Canvas {
 		VENTANA.dispose();
 		// iniciado = false;
 		System.exit(0);
+	}
+	
+	private void bucleJuego() {
+		
 	}
 
 	public boolean isIniciado() {

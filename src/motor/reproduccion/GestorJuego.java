@@ -2,6 +2,12 @@ package motor.reproduccion;
 
 import java.util.ArrayList;
 
+/**
+ * 
+ * Gestiona las pantallas del juego(Menu - Game - Pause).
+ * @author warjav-work
+ *
+ */
 public class GestorJuego {
 
 	private ArrayList<NivelJuego> niveles = new ArrayList<NivelJuego>();

@@ -1,5 +1,7 @@
 package game.main;
 
+import java.awt.Color;
+
 import javax.swing.SwingUtilities;
 
 import motor.reproduccion.Ventana;
@@ -16,11 +18,18 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		SwingUtilities.invokeLater(() -> {
+		//SwingUtilities.invokeLater(() -> {
 			ventana = new Ventana(TITULO, ANCHO, ALTO, TAM_BUFFER);
+			
 			ventana.mostrar();
+			
+			while(ventana.isIniciado()) {
+				ventana.refrescar(Color.BLACK);
+				ventana.actualizar();
+			}
+			ventana.cerrar();
 
-		});
+		//});
 
 	}
 

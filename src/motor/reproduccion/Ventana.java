@@ -47,7 +47,7 @@ public class Ventana extends Canvas {
 		this.createBufferStrategy(TAM_BUFFER);
 		iniciado = true;
 		VENTANA.setVisible(true);
-		Debug.LogInfo(this.getClass().getSimpleName() + ">> ¡¡VENTANA INICIADA!!");
+		Debug.LogInfo(this.getClass().getSimpleName() + " >> ¡¡VENTANA INICIADA!!");
 		
 	}
 
@@ -66,7 +66,7 @@ public class Ventana extends Canvas {
 	public void refrescar(Color color) {
 
 		if (!isIniciado()) {
-			Debug.LogError(this.getClass().getSimpleName() + "-> VENTANA NO INICIADA");
+			Debug.LogError(this.getClass().getSimpleName() + " >> VENTANA NO INICIADA");
 		}
 
 		BufferStrategy st = this.getBufferStrategy();

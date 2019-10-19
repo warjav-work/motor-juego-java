@@ -8,8 +8,6 @@ import java.awt.image.BufferStrategy;
 
 import javax.swing.JFrame;
 
-import motor.utilidades.Debug;
-
 public class Ventana extends Canvas {
 
 	private static final long serialVersionUID = 1L;
@@ -17,9 +15,19 @@ public class Ventana extends Canvas {
 	private static JFrame VENTANA;
 	private static int ANCHO, ALTO, TAM_BUFFER;
 	private static String TITULO;
+
+	private GestorJuego gj;
+	private Thread bucle;
+
+	private final double FRECUENCIA = 60;
+	int frames, actualizaciones, tiempo;
+	private int framesPasados, actualizacionesPasadas;
+	
 	private static boolean iniciado;
 
-	public Ventana(String titulo, int ancho, int alto, int tam_buffer) {
+	public Ventana(String titulo, int ancho, int alto, int tam_buffer, GestorJuego gj) {
+
+		this.gj = gj;
 
 		Ventana.TITULO = titulo;
 		Ventana.ANCHO = ancho;
@@ -42,13 +50,19 @@ public class Ventana extends Canvas {
 
 	}
 
+	/**
+	 * Muestra la ventana e inicia el bucle de juego.
+	 */
 	public void mostrar() {
-		
+
 		this.createBufferStrategy(TAM_BUFFER);
 		iniciado = true;
 		VENTANA.setVisible(true);
-		Debug.LogInfo(this.getClass().getSimpleName() + " >> ¡¡VENTANA INICIADA!!");
-		
+
+		bucleJuego();
+
+		System.out.println(this.getClass().getSimpleName() + " >> ¡¡VENTANA INICIADA!!");
+
 	}
 
 	/**
@@ -66,7 +80,7 @@ public class Ventana extends Canvas {
 	public void refrescar(Color color) {
 
 		if (!isIniciado()) {
-			Debug.LogError(this.getClass().getSimpleName() + " >> VENTANA NO INICIADA");
+			System.err.println(this.getClass().getSimpleName() + " >> VENTANA NO INICIADA");
 		}
 
 		BufferStrategy st = this.getBufferStrategy();
@@ -82,11 +96,51 @@ public class Ventana extends Canvas {
 	 */
 	public void cerrar() {
 
-		Debug.LogInfo(this.getClass().getSimpleName() + "¡¡CERRANDO LA APLICACIÓN!!");
+		System.out.println(this.getClass().getSimpleName() + "¡¡CERRANDO LA APLICACIÓN!!");
 
 		VENTANA.dispose();
 		// iniciado = false;
 		System.exit(0);
+	}
+
+	private void bucleJuego() {
+		bucle = new Thread("Bucle Ventana") {
+			@Override
+			public void run() {
+				double pasado = System.nanoTime();
+				double delta = 0;
+				final double ns = 1e9 / FRECUENCIA;
+
+				double iniciar = System.currentTimeMillis();
+				int siguente = 1;
+
+				while (isIniciado()) {
+
+					double actual = System.nanoTime();
+					double ahora = (System.currentTimeMillis() - iniciar) / 1000;
+
+					delta += (actual - pasado) / ns;
+					pasado = actual;
+					while (delta >= 1) {
+
+						gj.actualizar();
+						delta--;
+					}
+					gj.repoducir();
+					
+					if (ahora >= siguente) {
+						siguente++;
+						tiempo++;
+						actualizacionesPasadas = actualizaciones;
+						framesPasados = frames;
+						System.out.println("Ventana" + " >> FPS: " + framesPasados + ", APS: " + actualizacionesPasadas);
+						actualizaciones = 0;
+						frames = 0;
+					}
+				}
+			}
+		};
+		bucle.start();
 	}
 
 	public boolean isIniciado() {

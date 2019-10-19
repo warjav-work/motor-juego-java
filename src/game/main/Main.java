@@ -14,6 +14,7 @@ public class Main extends GestorJuego {
 
 	public Main() {
 		ventana = crearVentana(TITULO, ANCHO, ALTO, TAM_BUFFER);
+		ventana.mostrar();
 	}
 
 	public static void main(String[] args) {
@@ -22,7 +23,7 @@ public class Main extends GestorJuego {
 		m.ingresaNivel(ID_GAME, true);
 
 		// INICIAR JUEGO
-		ventana.mostrar();
+		
 		
 
 	}

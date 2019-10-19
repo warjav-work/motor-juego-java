@@ -3,7 +3,6 @@ package game.niveles;
 import motor.reproduccion.GestorJuego;
 import motor.reproduccion.NivelJuego;
 import motor.reproduccion.Ventana;
-import motor.utilidades.Debug;
 
 public class Game extends NivelJuego {
 
@@ -13,7 +12,7 @@ public class Game extends NivelJuego {
 
 	@Override
 	public void iniciar(Ventana ventana, GestorJuego gestor) {
-		Debug.LogInfo(this.getClass().getSimpleName() + " >> ¡¡JUEGO INICIADO!!");
+		System.out.println(this.getClass().getSimpleName() + " >> ¡¡JUEGO INICIADO!!");
 
 	}
 

@@ -8,8 +8,6 @@ import java.awt.image.BufferStrategy;
 
 import javax.swing.JFrame;
 
-import motor.utilidades.Debug;
-
 public class Ventana extends Canvas {
 
 	private static final long serialVersionUID = 1L;
@@ -63,7 +61,7 @@ public class Ventana extends Canvas {
 
 		bucleJuego();
 
-		Debug.LogInfo(this.getClass().getSimpleName() + " >> ¡¡VENTANA INICIADA!!");
+		System.out.println(this.getClass().getSimpleName() + " >> ¡¡VENTANA INICIADA!!");
 
 	}
 
@@ -82,7 +80,7 @@ public class Ventana extends Canvas {
 	public void refrescar(Color color) {
 
 		if (!isIniciado()) {
-			Debug.LogError(this.getClass().getSimpleName() + " >> VENTANA NO INICIADA");
+			System.err.println(this.getClass().getSimpleName() + " >> VENTANA NO INICIADA");
 		}
 
 		BufferStrategy st = this.getBufferStrategy();
@@ -98,7 +96,7 @@ public class Ventana extends Canvas {
 	 */
 	public void cerrar() {
 
-		Debug.LogInfo(this.getClass().getSimpleName() + "¡¡CERRANDO LA APLICACIÓN!!");
+		System.out.println(this.getClass().getSimpleName() + "¡¡CERRANDO LA APLICACIÓN!!");
 
 		VENTANA.dispose();
 		// iniciado = false;
@@ -135,7 +133,7 @@ public class Ventana extends Canvas {
 						tiempo++;
 						actualizacionesPasadas = actualizaciones;
 						framesPasados = frames;
-						Debug.LogInfo("Ventana" + " >> FPS: " + framesPasados + ", APS: " + actualizacionesPasadas);
+						System.out.println("Ventana" + " >> FPS: " + framesPasados + ", APS: " + actualizacionesPasadas);
 						actualizaciones = 0;
 						frames = 0;
 					}

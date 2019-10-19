@@ -19,13 +19,13 @@ public class Game extends NivelJuego {
 
 	@Override
 	public void actualizar(Ventana ventana, GestorJuego gestor) {
-		Debug.LogInfo(this.getClass().getSimpleName() + " >> JUEGO ACTUALIZANDO");
+		
 
 	}
 
 	@Override
 	public void reproducir(Ventana ventana, GestorJuego gestor) {
-		Debug.LogInfo(this.getClass().getSimpleName() + " >> JUEGO REPRODUCIENDO");
+		
 
 	}
 

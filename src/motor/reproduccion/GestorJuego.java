@@ -1,7 +1,15 @@
 package motor.reproduccion;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
+/**
+ * 
+ * Gestiona las pantallas del juego(Menu - Game - Pause).
+ * 
+ * @author warjav-work
+ *
+ */
 public class GestorJuego {
 
 	private ArrayList<NivelJuego> niveles = new ArrayList<NivelJuego>();
@@ -25,7 +33,7 @@ public class GestorJuego {
 	}
 
 	public Ventana crearVentana(String titulo, int ancho, int alto, int tam_buffer) {
-		ventana = new Ventana(titulo, ancho, alto, tam_buffer);
+		ventana = new Ventana(titulo, ancho, alto, tam_buffer, this);
 		return ventana;
 	}
 
@@ -36,13 +44,19 @@ public class GestorJuego {
 	}
 
 	protected void actualizar() {
-		if (isNivelAbierto())
+		if (isNivelAbierto()) {
 			nivelActual.actualizar(ventana, this);
+			ventana.actualizaciones++;
+		}
 	}
 
 	protected void repoducir() {
-		if (isNivelAbierto())
+		if (isNivelAbierto()) {
+			ventana.refrescar(Color.BLACK);
 			nivelActual.reproducir(ventana, this);
+			ventana.actualizar();
+			ventana.frames++;
+		}
 	}
 
 	private boolean isNivelAbierto() {

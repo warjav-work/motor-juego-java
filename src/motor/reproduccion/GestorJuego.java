@@ -53,7 +53,7 @@ public class GestorJuego {
 	protected void repoducir() {
 		if (isNivelAbierto()) {
 			ventana.refrescar(Color.BLACK);
-			nivelActual.reproducir(ventana, this);
+			nivelActual.reproducir(ventana, ventana.getReproductor(), this);
 			ventana.actualizar();
 			ventana.frames++;
 		}

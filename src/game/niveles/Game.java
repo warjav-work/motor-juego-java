@@ -2,6 +2,7 @@ package game.niveles;
 
 import motor.reproduccion.GestorJuego;
 import motor.reproduccion.NivelJuego;
+import motor.reproduccion.Reproductor;
 import motor.reproduccion.Ventana;
 
 public class Game extends NivelJuego {
@@ -23,9 +24,10 @@ public class Game extends NivelJuego {
 	}
 
 	@Override
-	public void reproducir(Ventana ventana, GestorJuego gestor) {
+	public void reproducir(Ventana ventana, Reproductor r, GestorJuego gestor) {
 		
-
+		r.dibujarTexto("Hola mundo", 100, 300);
+		r.rectanguloRelleno(200, 200, 36, 36);
 	}
 
 }

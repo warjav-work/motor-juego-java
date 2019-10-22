@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
+import motor.reproduccion.graficos.Imagen;
+
 public class Reproductor {
 	private Ventana ventana;
 	private BufferStrategy st;
@@ -15,6 +17,10 @@ public class Reproductor {
 		this.st = ventana.getBufferStrategy();
 		this.g = st.getDrawGraphics();
 		
+	}
+	
+	public void dibujarImagen(Imagen imagen, int x, int y) {
+		g.drawImage(imagen.getImagen(), x, y, null);
 	}
 	
 	public void dibujarTexto(String texto, int x, int y) {

@@ -18,12 +18,10 @@ public class Main extends GestorJuego {
 	}
 
 	public static void main(String[] args) {
+		
 		Main m = new Main();
 		m.agregarNivel(new Game(ID_GAME));
 		m.ingresaNivel(ID_GAME, true);
-
-		// INICIAR JUEGO
-		
 		
 
 	}

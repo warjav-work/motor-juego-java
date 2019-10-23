@@ -31,7 +31,7 @@ public class Game extends NivelJuego {
 		
 		r.dibujarTexto("Hola mundo", 100, 300);
 		r.rectanguloRelleno(200, 200, 36, 36);
-		r.dibujarImagen(img, 200, 200);
+		r.dibujarImagen(img, 300, 200);
 	}
 
 }

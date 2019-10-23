@@ -18,6 +18,8 @@ public class Ventana extends Canvas {
 
 	private GestorJuego gj;
 	private Thread bucle;
+	private Reproductor reproductor;
+	
 
 	private final double FRECUENCIA = 60;
 	int frames, actualizaciones, tiempo;
@@ -59,6 +61,7 @@ public class Ventana extends Canvas {
 		iniciado = true;
 		VENTANA.setVisible(true);
 
+		reproductor = new Reproductor(this);
 		bucleJuego();
 
 		System.out.println(this.getClass().getSimpleName() + " >> ¡¡VENTANA INICIADA!!");
@@ -145,6 +148,10 @@ public class Ventana extends Canvas {
 
 	public boolean isIniciado() {
 		return iniciado;
+	}
+	
+	protected Reproductor getReproductor() {
+		return reproductor;
 	}
 
 }

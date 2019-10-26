@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 public abstract class Entrada {
+	
 	public static int
 	A = KeyEvent.VK_A,
 	B = KeyEvent.VK_B,

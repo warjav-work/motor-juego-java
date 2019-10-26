@@ -8,6 +8,9 @@ import java.awt.image.BufferStrategy;
 
 import javax.swing.JFrame;
 
+import motor.entradas.Raton;
+import motor.entradas.Teclado;
+
 public class Ventana extends Canvas {
 
 	private static final long serialVersionUID = 1L;
@@ -26,6 +29,9 @@ public class Ventana extends Canvas {
 	private int framesPasados, actualizacionesPasadas;
 	
 	private static boolean iniciado;
+	
+	private Teclado teclado = new Teclado();
+	private Raton raton = new Raton();
 
 	public Ventana(String titulo, int ancho, int alto, int tam_buffer, GestorJuego gj) {
 
@@ -62,10 +68,18 @@ public class Ventana extends Canvas {
 		VENTANA.setVisible(true);
 
 		reproductor = new Reproductor(this);
+		iniciarListenersEntrada();
 		bucleJuego();
 
 		System.out.println(this.getClass().getSimpleName() + " >> ¡¡VENTANA INICIADA!!");
 
+	}
+
+	private void iniciarListenersEntrada() {
+		this.addKeyListener(teclado);
+		this.addMouseListener(raton);
+		this.addMouseMotionListener(raton);
+		
 	}
 
 	/**
@@ -152,6 +166,14 @@ public class Ventana extends Canvas {
 	
 	protected Reproductor getReproductor() {
 		return reproductor;
+	}
+	
+	public Teclado getTeclado() {
+		return teclado;
+	}
+	
+	public Raton getRaton() {
+		return raton;
 	}
 
 }

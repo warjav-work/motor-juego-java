@@ -16,6 +16,7 @@ public class Reproductor {
 		this.ventana = ventana;
 		this.st = ventana.getBufferStrategy();
 		this.g = st.getDrawGraphics();
+		g.setColor(Color.WHITE);
 		
 	}
 	
@@ -23,7 +24,7 @@ public class Reproductor {
 		g.drawImage(imagen.getImagen(), x, y, null);
 	}
 	
-	public void dibujarTexto(String texto, int x, int y) {
+	public void dibujarTexto(String texto, int x, int y) {		
 		g.drawString(texto, x, y);
 	}
 	

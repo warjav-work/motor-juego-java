@@ -1,26 +1,30 @@
 package motor.reproduccion.graficos;
 
-import java.awt.Image;
+import java.awt.image.BufferedImage;
 
 import motor.utilidades.CargadorRecurso;
 
 public class Imagen {
 
-	private Image img;
+	private BufferedImage imagen;
 
 	public Imagen(String ruta) {
-		img = CargadorRecurso.cargarImagen(ruta);
+		imagen = CargadorRecurso.cargarBufferedImagen(ruta);
 	}
 	
-	public Image getImagen() {
-		return img;
+	public Imagen(BufferedImage imagen) {
+		this.imagen = imagen;
+	}
+	
+	public BufferedImage getImagen() {
+		return imagen;
 	}
 	
 	public int getAncho() {
-		return img.getWidth(null);
+		return imagen.getWidth(null);
 	}
 	
 	public int getAlto() {
-		return img.getHeight(null);
+		return imagen.getHeight(null);
 	}
 }

@@ -10,6 +10,7 @@ public class Reproductor {
 	private Ventana ventana;
 	private BufferStrategy st;
 	private Graphics g;
+	private int camX, camY;
 	
 	
 	public Reproductor(Ventana ventana) {
@@ -34,6 +35,27 @@ public class Reproductor {
 	
 	public void setColor(Color color) {
 		g.setColor(color);
+	}
+	
+	public void setPosicionCamara(int cx, int cy) {
+		g.translate(-camX, -camY);
+		camX = cx;
+		camY = cy;		
+		g.translate(camX, camY);
+	}
+	
+	public void moverCamara(int mx, int my) {
+		camX += mx;
+		camY += my;
+		g.translate(mx, my);
+	}
+	
+	public int getCamX() {
+		return camX;
+	}
+	
+	public int getCamY() {
+		return camY;
 	}
 
 }

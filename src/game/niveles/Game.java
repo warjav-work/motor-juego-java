@@ -35,10 +35,10 @@ public class Game extends NivelJuego {
 
 		coordenadas = raton.getX() + ", " + raton.getY();
 		if (teclado.isPulsada(Teclado.W)) {
-			y -= 2;
+			cy --;
 		}
 		if (teclado.isPulsada(Teclado.S)) {
-			y += 1;
+			cy ++;
 		}
 
 		if (teclado.isPulsada(Teclado.A)) {
@@ -47,6 +47,9 @@ public class Game extends NivelJuego {
 		if (teclado.isPulsada(Teclado.D)) {
 			x += 1;
 		}
+		x = raton.getX() -50 - cx;
+		y = raton.getY() -50 + cy;
+		
 
 	}
 

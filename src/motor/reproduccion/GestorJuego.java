@@ -3,6 +3,8 @@ package motor.reproduccion;
 import java.awt.Color;
 import java.util.ArrayList;
 
+import motor.fisica.objetos.GestorObjeto;
+
 /**
  * 
  * Gestiona las pantallas del juego (Menu - Game - Pause).
@@ -54,6 +56,7 @@ public class GestorJuego {
 	protected void actualizar() {
 		if (isNivelAbierto()) {
 			nivelActual.actualizar(ventana, this);
+			GestorObjeto.actualizar(ventana, this);
 			ventana.actualizaciones++;
 		}
 	}
@@ -61,7 +64,10 @@ public class GestorJuego {
 	protected void repoducir() {
 		if (isNivelAbierto()) {
 			ventana.refrescar(Color.BLACK);
+			
 			nivelActual.reproducir(ventana, ventana.getReproductor(), this);
+			GestorObjeto.reproducir(ventana, ventana.getReproductor());
+			
 			ventana.actualizar();
 			ventana.frames++;
 		}

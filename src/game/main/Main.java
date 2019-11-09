@@ -6,7 +6,7 @@ import motor.reproduccion.Ventana;
 
 public class Main extends GestorJuego {
 
-	private static final int ANCHO = 800, ALTO = 600, TAM_BUFFER = 2;
+	private static final int ANCHO = 600, ALTO = 400, TAM_BUFFER = 2;
 	private static final String TITULO = "Motor Juego Java";
 	private static Ventana ventana;
 
@@ -14,6 +14,7 @@ public class Main extends GestorJuego {
 
 	public Main() {
 		ventana = crearVentana(TITULO, ANCHO, ALTO, TAM_BUFFER);
+		ventana.setPantallaCompleta(false);
 		ventana.mostrar();
 	}
 

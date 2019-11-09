@@ -37,7 +37,7 @@ public abstract class Entrada {
 	IZQDA = KeyEvent.VK_LEFT,
 	DCHA = KeyEvent.VK_RIGHT,
 	MAYUS = KeyEvent.VK_SHIFT,
-	SPACIO = KeyEvent.VK_SPACE,
+	ESPACIO = KeyEvent.VK_SPACE,
 	ENTER = KeyEvent.VK_ENTER,
 	ESCAPE = KeyEvent.VK_ESCAPE,
 	

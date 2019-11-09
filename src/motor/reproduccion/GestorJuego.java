@@ -3,9 +3,11 @@ package motor.reproduccion;
 import java.awt.Color;
 import java.util.ArrayList;
 
+import motor.fisica.objetos.GestorObjeto;
+
 /**
  * 
- * Gestiona las pantallas del juego(Menu - Game - Pause).
+ * Gestiona las pantallas del juego (Menu - Game - Pause).
  * 
  * @author warjav-work
  *
@@ -32,6 +34,14 @@ public class GestorJuego {
 		}
 	}
 
+	/**
+	 * 
+	 * @param titulo Titulo de la ventana del Juego.
+	 * @param ancho Ancho de la ventana del Juego.
+	 * @param alto Alto de la ventana del Juego.
+	 * @param tam_buffer Tamaño del buffer.
+	 * @return Devuelve una instancia de la ventana.
+	 */
 	public Ventana crearVentana(String titulo, int ancho, int alto, int tam_buffer) {
 		ventana = new Ventana(titulo, ancho, alto, tam_buffer, this);
 		return ventana;
@@ -46,6 +56,7 @@ public class GestorJuego {
 	protected void actualizar() {
 		if (isNivelAbierto()) {
 			nivelActual.actualizar(ventana, this);
+			GestorObjeto.actualizar(ventana, this);
 			ventana.actualizaciones++;
 		}
 	}
@@ -53,7 +64,10 @@ public class GestorJuego {
 	protected void repoducir() {
 		if (isNivelAbierto()) {
 			ventana.refrescar(Color.BLACK);
+			
 			nivelActual.reproducir(ventana, ventana.getReproductor(), this);
+			GestorObjeto.reproducir(ventana, ventana.getReproductor());
+			
 			ventana.actualizar();
 			ventana.frames++;
 		}

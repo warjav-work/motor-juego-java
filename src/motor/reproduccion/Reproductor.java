@@ -33,6 +33,13 @@ public class Reproductor {
 		g.fillRect(x, y, ancho, alto);
 	}
 	
+	public void rectanguloRelleno(int x, int y,int ancho, int alto, Color color) {
+		Color anterior = g.getColor();
+		g.setColor(color);
+		g.fillRect(x, y, ancho, alto);
+		g.setColor(anterior);
+	}
+	
 	public void setColor(Color color) {
 		g.setColor(color);
 	}

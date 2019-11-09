@@ -119,6 +119,17 @@ public class Ventana extends Canvas {
 		// iniciado = false;
 		System.exit(0);
 	}
+	
+	public void setPantallaCompleta(boolean pantallaCompleta) {
+		if(pantallaCompleta && !iniciado) {
+			VENTANA.dispose();
+			VENTANA.setUndecorated(true);
+			VENTANA.setExtendedState(JFrame.MAXIMIZED_BOTH);
+			VENTANA.setVisible(true);			
+		}
+		ANCHO = VENTANA.getWidth();
+		ALTO = VENTANA.getHeight();
+	}
 
 	private void bucleJuego() {
 		bucle = new Thread("Bucle Ventana") {
